@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1522B50D2934A1D1004B1EB0 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B50C2934A1D1004B1EB0 /* Repository.swift */; };
+		1522B50F2934B7B0004B1EB0 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B50C2934A1D1004B1EB0 /* Repository.swift */; };
 		15D2D6A72933A9D200AC35CC /* GitHubRepoWatcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */; };
 		15D2D6A92933A9D200AC35CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6A82933A9D200AC35CC /* ContentView.swift */; };
 		15D2D6AB2933A9D500AC35CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D2D6AA2933A9D500AC35CC /* Assets.xcassets */; };
@@ -64,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1522B50C2934A1D1004B1EB0 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		15D2D6A32933A9D200AC35CC /* GitHubRepoWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepoWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoWatcherApp.swift; sourceTree = "<group>"; };
 		15D2D6A82933A9D200AC35CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 			children = (
 				15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */,
 				15D2D6A82933A9D200AC35CC /* ContentView.swift */,
+				1522B50C2934A1D1004B1EB0 /* Repository.swift */,
 				15D2D6AA2933A9D500AC35CC /* Assets.xcassets */,
 				15D2D6AC2933A9D500AC35CC /* Preview Content */,
 			);
@@ -366,6 +370,7 @@
 				15D2D6A92933A9D200AC35CC /* ContentView.swift in Sources */,
 				15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
 				15D2D6A72933A9D200AC35CC /* GitHubRepoWatcherApp.swift in Sources */,
+				1522B50D2934A1D1004B1EB0 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +397,7 @@
 			files = (
 				15D2D6E12933B7F500AC35CC /* RepoWatcherWidget.swift in Sources */,
 				15D2D6DD2933B7F500AC35CC /* RepoWatcherWidgetBundle.swift in Sources */,
+				1522B50F2934B7B0004B1EB0 /* Repository.swift in Sources */,
 				15D2D6DF2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift in Sources */,
 				15D2D6E62933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
 			);
