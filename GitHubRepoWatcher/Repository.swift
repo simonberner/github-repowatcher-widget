@@ -16,6 +16,15 @@ struct Repository: Decodable {
     let openIssues: Int
     let pushedAt: String
 
+    // mock data object
+    static let placeholder = Repository(name: "Your Repo",
+                                       owner: Owner(avatarUrl: ""),
+                                       hasIssues: true,
+                                       forks: 66,
+                                       watchers: 250,
+                                       openIssues: 88,
+                                       pushedAt: "2022-11-27T19:00:59Z")
+
 }
 
 struct Owner: Decodable {
