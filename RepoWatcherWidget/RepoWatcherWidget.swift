@@ -43,6 +43,10 @@ struct RepoEntry: TimelineEntry {
 
 struct RepoWatcherWidgetEntryView : View {
     var entry: RepoEntry
+    let formatter = ISO8601DateFormatter()
+    var daysSinceLastActivity: Int {
+        calculateDaysSinceLastActivity(from: entry.repo.pushedAt)
+    }
 
     var body: some View {
         HStack {
@@ -68,12 +72,13 @@ struct RepoWatcherWidgetEntryView : View {
             Spacer()
 
             VStack {
-                Text("99")
+                Text("\(daysSinceLastActivity)")
                     .bold()
                     .font(.system(size: 70))
                     .frame(width: 90)
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
+                    .foregroundColor(daysSinceLastActivity < 50 ? .green : .red)
 
                 Text("days ago")
                     .font(.caption2)
@@ -81,6 +86,11 @@ struct RepoWatcherWidgetEntryView : View {
             }
         }
         .padding()
+    }
+
+    private func calculateDaysSinceLastActivity(from dateString: String) -> Int {
+        let lastActivityDate = formatter.date(from: dateString) ?? .now
+        return Calendar.current.dateComponents([.day], from: lastActivityDate, to: .now).day ?? 0
     }
 }
 
