@@ -21,6 +21,9 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
     <a href="https://gitmoji.dev">
         <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=for-the-badge" alt="Gitmoji">
     </a>
+    <a href="https://github.com/conventional-commits/conventionalcommits.org">
+        <img src="https://img.shields.io/badge/Conventional%20Commits-📝-lightgrey.svg?style=for-the-badge" alt="Conventional Commits">
+    </a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/license-MIT-black.svg?style=for-the-badge" />
     </a>
@@ -43,6 +46,16 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
 ## Screenshot
 
 ## Learnings
+- AsyncImage is not working for widgets.
+- To chose good useful information to show to a user of a widget is fundamental. A good widget has to show to a user:
+    - Glanceable UI Elements
+    - Graphical attractive data
+    - Quick information
+- Point of contention: Apple recommends giving a Widget some placeholder (mock data) to show it in the Widget Gallery instead of doing any network calls.
+(But Twitch does network calls in getSnapshot, but probably because of some business reasons)
+    
+## GitHub API
+- [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
 
 ## Credits
 🙏🏽 Sean Allen
