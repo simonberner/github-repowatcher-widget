@@ -20,18 +20,18 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [RepoEntry] = []
+        Task {
+            let nextUpdate = Date().addingTimeInterval(43200) // 12 hours in seconds
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = RepoEntry(date: entryDate, repo: .placeholder, configuration: configuration)
-            entries.append(entry)
+            do {
+                let repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.publish)
+                let entry = RepoEntry(date: .now, repo: repo, configuration: configuration)
+                let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+                completion(timeline)
+            } catch {
+                print("❌ Error = \(error.localizedDescription)")
+            }
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
 }
 
@@ -88,6 +88,7 @@ struct RepoWatcherWidgetEntryView : View {
         .padding()
     }
 
+    // TODO: refactor out?
     private func calculateDaysSinceLastActivity(from dateString: String) -> Int {
         let lastActivityDate = formatter.date(from: dateString) ?? .now
         return Calendar.current.dateComponents([.day], from: lastActivityDate, to: .now).day ?? 0
