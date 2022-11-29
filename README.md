@@ -40,8 +40,8 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
 - WidgetKit
 
 ## Device Compatibility
-- iPhone >= iOS16
-- iPad >= iOS16
+- iPhone >= iOS16+
+- iPad >= iOS16+
 
 ## Screenshot
 
@@ -52,7 +52,11 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
     - Graphical attractive data
     - Quick information
 - Point of contention: Apple recommends giving a Widget some placeholder (mock data) to show it in the Widget Gallery instead of doing any network calls.
-(But Twitch does network calls in getSnapshot, but probably because of some business reasons)
+(Note: Twitch does network calls in getSnapshot, but probably because of some business reasons)
+- Normally there are no error alerts shown to a user in a widget.
+    - But there are cases where it makes sense to tell the user an issue (eg. 'Sign in with Google').
+    - How you handle errors in Widgets is a unique product decision.
+    - To make our lives as developer easier, add log/print statements for debugging errors.
     
 ## GitHub API
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
