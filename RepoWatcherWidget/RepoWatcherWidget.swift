@@ -10,22 +10,26 @@ import SwiftUI
 import Intents
 
 struct Provider: IntentTimelineProvider {
+
+    // placeholder for the Widget Search (static mock data)
     func placeholder(in context: Context) -> RepoEntry {
-        RepoEntry(date: Date(), repo: .placeholder, configuration: ConfigurationIntent())
+        RepoEntry(date: Date(), repo: .placeholder, avatarImageData: Data(), configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (RepoEntry) -> ()) {
-        let entry = RepoEntry(date: Date(), repo: .placeholder, configuration: configuration)
+        let entry = RepoEntry(date: Date(), repo: .placeholder, avatarImageData: Data(), configuration: configuration)
         completion(entry)
     }
 
+    // get updated timeline entry after each interval
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
             let nextUpdate = Date().addingTimeInterval(43200) // 12 hours in seconds
 
             do {
-                let repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.publish)
-                let entry = RepoEntry(date: .now, repo: repo, configuration: configuration)
+                let repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.google)
+                let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
+                let entry = RepoEntry(date: .now, repo: repo, avatarImageData: avatarImageData ?? Data(), configuration: configuration)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
@@ -38,6 +42,7 @@ struct Provider: IntentTimelineProvider {
 struct RepoEntry: TimelineEntry {
     let date: Date
     let repo: Repository
+    let avatarImageData: Data
     let configuration: ConfigurationIntent
 }
 
@@ -52,8 +57,10 @@ struct RepoWatcherWidgetEntryView : View {
         HStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Circle()
+                    Image(uiImage: UIImage(data: entry.avatarImageData) ?? UIImage(named: "avatar")!)
+                        .resizable()
                         .frame(width: 50, height: 50)
+                        .clipShape(Circle())
                     Text(entry.repo.name)
                         .font(.title2)
                         .fontWeight(.semibold)
@@ -110,7 +117,10 @@ struct RepoWatcherWidget: Widget {
 
 struct RepoWatcherWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(), repo: .placeholder, configuration: ConfigurationIntent()))
+        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(),
+                                                    repo: .placeholder,
+                                                    avatarImageData: Data(),
+                                                    configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

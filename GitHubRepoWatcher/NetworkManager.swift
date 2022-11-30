@@ -18,6 +18,10 @@ class NetworkManager {
     }
 
     // Swift 5.5 async/await call
+
+    /// Get a GitHub repository object
+    /// - Parameter urlString: The url of the GitHub repository
+    /// - Returns: The repository object
     func getRepo(atUrl urlString: String) async throws -> Repository {
         // check we have a valid url
         guard let url = URL(string: urlString) else { throw NetworkError.invalidURL }
@@ -31,6 +35,24 @@ class NetworkManager {
             return try decoder.decode(Repository.self, from: data)
         } catch {
             throw NetworkError.invalidRepoData
+        }
+    }
+
+
+    /// Download user avatar image data
+    ///
+    /// This call is a successor of the getRepo call. If the URL is not valid or the network calls fails,
+    /// the placeholder avatar will be used.
+    ///
+    /// - Parameter urlString: The url of the user avatar image
+    /// - Returns: The image data or nil in case of an error
+    func downloadImageData(from urlString: String) async -> Data? {
+        guard let url = URL(string: urlString) else { return nil }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            return data
+        } catch {
+            return nil
         }
     }
 }
