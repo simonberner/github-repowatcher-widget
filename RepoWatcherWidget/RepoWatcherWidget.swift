@@ -47,61 +47,27 @@ struct RepoEntry: TimelineEntry {
 }
 
 struct RepoWatcherWidgetEntryView : View {
+    @Environment(\.widgetFamily) var family
     var entry: RepoEntry
-    let formatter = ISO8601DateFormatter()
-    var daysSinceLastActivity: Int {
-        calculateDaysSinceLastActivity(from: entry.repo.pushedAt)
-    }
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Image(uiImage: UIImage(data: entry.avatarImageData) ?? UIImage(named: "avatar")!)
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                    Text(entry.repo.name)
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .minimumScaleFactor(0.6)
-                        .lineLimit(1)
+        switch family {
+            case .systemMedium:
+                RepoMediumView(repo: entry.repo)
+            case .systemLarge:
+                VStack(spacing: 36) {
+                    RepoMediumView(repo: entry.repo)
+                    RepoMediumView(repo: entry.repo)
                 }
-                .padding(.bottom, 6)
-
-                HStack {
-                    StatLabel(value: entry.repo.watchers, systemImageName: "star.fill")
-                    StatLabel(value: entry.repo.forks, systemImageName: "tuningfork")
-                    if entry.repo.hasIssues {
-                        StatLabel(value: entry.repo.openIssues, systemImageName: "exclamationmark.triangle.fill")
-                    }
-                }
-            }
-
-            Spacer()
-
-            VStack {
-                Text("\(daysSinceLastActivity)")
-                    .bold()
-                    .font(.system(size: 70))
-                    .frame(width: 90)
-                    .minimumScaleFactor(0.6)
-                    .lineLimit(1)
-                    .foregroundColor(daysSinceLastActivity < 50 ? .green : .red)
-
-                Text("days ago")
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
-            }
+                RepoMediumView(repo: entry.repo)
+            case .systemSmall, .systemExtraLarge, .accessoryCircular, .accessoryRectangular, .accessoryInline:
+                EmptyView()
+            @unknown default:
+                EmptyView()
         }
-        .padding()
+        RepoMediumView(repo: entry.repo)
     }
 
-    // TODO: refactor out?
-    private func calculateDaysSinceLastActivity(from dateString: String) -> Int {
-        let lastActivityDate = formatter.date(from: dateString) ?? .now
-        return Calendar.current.dateComponents([.day], from: lastActivityDate, to: .now).day ?? 0
-    }
 }
 
 struct RepoWatcherWidget: Widget {
@@ -111,9 +77,9 @@ struct RepoWatcherWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             RepoWatcherWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
-        .supportedFamilies([.systemMedium])
+        .configurationDisplayName("GitHub Repo Watcher")
+        .description("Keep an eye on one or two GitHub Repositories")
+        .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 
@@ -123,23 +89,6 @@ struct RepoWatcherWidget_Previews: PreviewProvider {
                                                     repo: .placeholder,
                                                     avatarImageData: Data(),
                                                     configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
-    }
-}
-
-// fileprivate: only accessible inside this file
-fileprivate struct StatLabel: View {
-    let value: Int
-    let systemImageName: String
-
-    var body: some View {
-        Label {
-            Text("\(value)")
-                .font(.footnote)
-        } icon: {
-            Image(systemName: systemImageName)
-                .foregroundColor(.green)
-        }
-        .fontWeight(.medium)
+        .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
