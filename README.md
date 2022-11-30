@@ -30,6 +30,13 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
 </p>
 
 ## Functionality
+At tag 1.0.0: A medium sized Widget that gets a GitHub repository and displays the following infos:
+- Owner avatar image
+- Repository name
+- Days since last pushes
+- Number of watchers
+- Number of forks
+- Number of open issues
 
 ## Tech Stack
 - Xcode 14.1
@@ -44,7 +51,7 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
 - iPad >= iOS16+
 
 ## Screenshot
-Medium sized Widget:
+Medium sized Widget at tag 1.0.0:
 
 ![Widget1](Widget1.png)
 
