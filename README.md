@@ -44,6 +44,9 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
 - iPad >= iOS16+
 
 ## Screenshot
+Medium sized Widget:
+
+![Widget1](Widget1.png)
 
 ## Learnings
 - AsyncImage is not working for widgets.
@@ -57,6 +60,8 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
     - But there are cases where it makes sense to tell the user an issue (eg. 'Sign in with Google').
     - How you handle errors in Widgets is a unique product decision.
     - To make our lives as developer easier, add log/print statements for debugging errors.
+- Network calls:
+    - A successive network call is a network call that relies on a parent network call
     
 ## GitHub API
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
