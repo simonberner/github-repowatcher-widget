@@ -13,11 +13,11 @@ struct Provider: IntentTimelineProvider {
 
     // placeholder for the Widget Search (static mock data)
     func placeholder(in context: Context) -> RepoEntry {
-        RepoEntry(date: Date(), repo: .placeholder, avatarImageData: Data(), configuration: ConfigurationIntent())
+        RepoEntry(date: Date(), repo: .placeholder, configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (RepoEntry) -> ()) {
-        let entry = RepoEntry(date: Date(), repo: .placeholder, avatarImageData: Data(), configuration: configuration)
+        let entry = RepoEntry(date: Date(), repo: .placeholder, configuration: configuration)
         completion(entry)
     }
 
@@ -27,9 +27,10 @@ struct Provider: IntentTimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43200) // 12 hours in seconds
 
             do {
-                let repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.google)
+                var repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.google)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
-                let entry = RepoEntry(date: .now, repo: repo, avatarImageData: avatarImageData ?? Data(), configuration: configuration)
+                repo.avatarData = avatarImageData ?? Data()
+                let entry = RepoEntry(date: .now, repo: repo, configuration: configuration)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
@@ -42,7 +43,6 @@ struct Provider: IntentTimelineProvider {
 struct RepoEntry: TimelineEntry {
     let date: Date
     let repo: Repository
-    let avatarImageData: Data
     let configuration: ConfigurationIntent
 }
 
@@ -59,13 +59,11 @@ struct RepoWatcherWidgetEntryView : View {
                     RepoMediumView(repo: entry.repo)
                     RepoMediumView(repo: entry.repo)
                 }
-                RepoMediumView(repo: entry.repo)
             case .systemSmall, .systemExtraLarge, .accessoryCircular, .accessoryRectangular, .accessoryInline:
                 EmptyView()
             @unknown default:
                 EmptyView()
         }
-        RepoMediumView(repo: entry.repo)
     }
 
 }
@@ -87,7 +85,6 @@ struct RepoWatcherWidget_Previews: PreviewProvider {
     static var previews: some View {
         RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(),
                                                     repo: .placeholder,
-                                                    avatarImageData: Data(),
                                                     configuration: ConfigurationIntent()))
         .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
