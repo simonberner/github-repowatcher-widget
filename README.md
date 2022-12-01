@@ -29,8 +29,23 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
     </a>
 </p>
 
+---
+
+## Contents
+* [Functionality](#functionality)
+* [Tech Stack](#tech-stack)
+* [Frameworks](#frameworks)
+* [Device Compatibility](#device-compatibility)
+* [Screenshots](#screenshots)
+* [Learnings](#learnings)
+* [GitHub API Call](#gitHub-api-call)
+* [Code Comments](#code-comments)
+* [Credits](#credits)
+
+---
+
 ## Functionality
-At tag 1.0.0: A medium sized Widget that gets a GitHub repository and displays the following infos:
+A medium sized Widget that gets a GitHub repository and displays the following infos:
 - Owner avatar image
 - Repository name
 - Days since last pushes
@@ -50,8 +65,8 @@ At tag 1.0.0: A medium sized Widget that gets a GitHub repository and displays t
 - iPhone >= iOS16+
 - iPad >= iOS16+
 
-## Screenshot
-Medium sized Widget at tag 1.0.0:
+## Screenshots
+Medium sized Widget:
 
 ![Widget1](Widget1.png)
 
@@ -61,17 +76,25 @@ Medium sized Widget at tag 1.0.0:
     - Glanceable UI Elements
     - Graphical attractive data
     - Quick information
+### Widget Gallery
 - Point of contention: Apple recommends giving a Widget some placeholder (mock data) to show it in the Widget Gallery instead of doing any network calls.
 (Note: Twitch does network calls in getSnapshot, but probably because of some business reasons)
+### Alerts
 - Normally there are no error alerts shown to a user in a widget.
     - But there are cases where it makes sense to tell the user an issue (eg. 'Sign in with Google').
     - How you handle errors in Widgets is a unique product decision.
     - To make our lives as developer easier, add log/print statements for debugging errors.
-- Network calls:
-    - A successive network call is a network call that relies on a parent network call
+### Network calls
+- A successive network call is a network call that relies on a parent network call
+### JSON
+- [Codable: A type alias for Encodable and Decodable](https://www.swiftbysundell.com/basics/codable/)
+- [Ignoring invalid JSON elements when using Codable](https://www.swiftbysundell.com/articles/ignoring-invalid-json-elements-codable/)
     
-## GitHub API
+## GitHub API Call
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
+
+## Code Comments
+I love putting in the effort of adding comments to my code, [here is why](https://www.youtube.com/watch?v=1NEa-OcsTow).
 
 ## Credits
 🙏🏽 Sean Allen
