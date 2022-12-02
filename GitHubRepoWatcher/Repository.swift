@@ -16,17 +16,6 @@ struct Repository {
     let openIssues: Int
     let pushedAt: String
     var avatarData: Data // Attaching the avatar image data to the (json) repository model
-
-    // mock data object
-    static let placeholder = Repository(name: "Your Repo",
-                                       owner: Owner(avatarUrl: ""),
-                                       hasIssues: true,
-                                       forks: 66,
-                                       watchers: 250,
-                                       openIssues: 88,
-                                       pushedAt: "2022-10-27T19:00:59Z",
-                                        avatarData: Data())
-
 }
 
 // With that extension we can make that type use the same structure as our JSON does,

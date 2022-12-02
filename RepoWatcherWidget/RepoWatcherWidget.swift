@@ -13,11 +13,11 @@ struct Provider: IntentTimelineProvider {
 
     // placeholder for the Widget Search (static mock data)
     func placeholder(in context: Context) -> RepoEntry {
-        RepoEntry(date: Date(), repo: .placeholder, configuration: ConfigurationIntent())
+        RepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (RepoEntry) -> ()) {
-        let entry = RepoEntry(date: Date(), repo: .placeholder, configuration: configuration)
+        let entry = RepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: configuration)
         completion(entry)
     }
 
@@ -30,7 +30,7 @@ struct Provider: IntentTimelineProvider {
                 var repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.google)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData ?? Data()
-                let entry = RepoEntry(date: .now, repo: repo, configuration: configuration)
+                let entry = RepoEntry(date: .now, repo: repo, bottomRepo: nil, configuration: configuration)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
@@ -43,6 +43,7 @@ struct Provider: IntentTimelineProvider {
 struct RepoEntry: TimelineEntry {
     let date: Date
     let repo: Repository
+    let bottomRepo: Repository? // second repo to show (optional because only needed for family .systemLarge)
     let configuration: ConfigurationIntent
 }
 
@@ -57,7 +58,7 @@ struct RepoWatcherWidgetEntryView : View {
             case .systemLarge:
                 VStack(spacing: 36) {
                     RepoMediumView(repo: entry.repo)
-                    RepoMediumView(repo: entry.repo)
+                    RepoMediumView(repo: entry.bottomRepo ?? MockData.repoTwo)
                 }
             case .systemSmall, .systemExtraLarge, .accessoryCircular, .accessoryRectangular, .accessoryInline:
                 EmptyView()
@@ -84,7 +85,8 @@ struct RepoWatcherWidget: Widget {
 struct RepoWatcherWidget_Previews: PreviewProvider {
     static var previews: some View {
         RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(),
-                                                    repo: .placeholder,
+                                                    repo: MockData.repoOne,
+                                                    bottomRepo: MockData.repoTwo,
                                                     configuration: ConfigurationIntent()))
         .previewContext(WidgetPreviewContext(family: .systemLarge))
     }

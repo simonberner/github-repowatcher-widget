@@ -28,6 +28,8 @@
 		15D2D6E62933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */; };
 		15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */; };
 		15D2D6EA2933B7F700AC35CC /* RepoWatcherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 15D2D6D52933B7F500AC35CC /* RepoWatcherWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		15D3F4D2293A0ACF00874205 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3F4D1293A0ACF00874205 /* MockData.swift */; };
+		15D3F4D3293A0B6E00874205 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D3F4D1293A0ACF00874205 /* MockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,7 @@
 		15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = RepoWatcherWidget.intentdefinition; sourceTree = "<group>"; };
 		15D2D6E32933B7F700AC35CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D2D6E52933B7F700AC35CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15D3F4D1293A0ACF00874205 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +209,7 @@
 				15D2D6DE2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift */,
 				15D2D6E02933B7F500AC35CC /* RepoWatcherWidget.swift */,
 				152225D42937A47700A7BC2C /* RepoMediumView.swift */,
+				15D3F4D1293A0ACF00874205 /* MockData.swift */,
 				15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */,
 				15D2D6E32933B7F700AC35CC /* Assets.xcassets */,
 				15D2D6E52933B7F700AC35CC /* Info.plist */,
@@ -375,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D2D6A92933A9D200AC35CC /* ContentView.swift in Sources */,
+				15D3F4D2293A0ACF00874205 /* MockData.swift in Sources */,
 				15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
 				1522B5112934FA2A004B1EB0 /* NetworkManager.swift in Sources */,
 				15D2D6A72933A9D200AC35CC /* GitHubRepoWatcherApp.swift in Sources */,
@@ -408,6 +413,7 @@
 				15D2D6DD2933B7F500AC35CC /* RepoWatcherWidgetBundle.swift in Sources */,
 				1522B50F2934B7B0004B1EB0 /* Repository.swift in Sources */,
 				15D2D6DF2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift in Sources */,
+				15D3F4D3293A0B6E00874205 /* MockData.swift in Sources */,
 				15D2D6E62933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
 				152225D52937A47700A7BC2C /* RepoMediumView.swift in Sources */,
 			);
