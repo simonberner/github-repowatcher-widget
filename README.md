@@ -1,6 +1,6 @@
 # GitHub Repo Watcher Widget
 
-This is a more advanced iOS16+ widget project to learn how to create a widget which relies on network calls to update its content.
+This is a more advanced iOS16+ widget project to learn how to create a medium and large widget which relies on network calls to update its content.
 
 <p align="center">
     <a href="https://en.wikipedia.org/wiki/IOS">
@@ -45,7 +45,7 @@ This is a more advanced iOS16+ widget project to learn how to create a widget wh
 ---
 
 ## Functionality
-A medium sized Widget that gets a GitHub repository and displays the following infos:
+A medium and large sized Widget that gets a GitHub repository and displays the following infos:
 - Owner avatar image
 - Repository name
 - Days since last pushes
@@ -66,9 +66,8 @@ A medium sized Widget that gets a GitHub repository and displays the following i
 - iPad >= iOS16+
 
 ## Screenshots
-Medium sized Widget:
 
-![Widget1](Widget1.png)
+![widgets](widgets.png)
 
 ## Learnings
 - AsyncImage is not working for widgets.
