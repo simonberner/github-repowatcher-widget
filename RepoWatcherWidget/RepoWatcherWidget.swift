@@ -27,10 +27,22 @@ struct Provider: IntentTimelineProvider {
             let nextUpdate = Date().addingTimeInterval(43200) // 12 hours in seconds
 
             do {
+                // Get Top Repo
                 var repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.google)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData ?? Data()
-                let entry = RepoEntry(date: .now, repo: repo, bottomRepo: nil, configuration: configuration)
+
+                // Get Bottom Repo if large Widget
+                var buttomRepo: Repository?
+                if context.family == .systemLarge {
+                    buttomRepo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.publish)
+                    // force unwrap 'buttomRepo' because if the above call fails, the below steps won't be executed
+                    let avatarImageData = await NetworkManager.shared.downloadImageData(from: buttomRepo!.owner.avatarUrl)
+                    buttomRepo!.avatarData = avatarImageData ?? Data()
+                }
+
+                // Create Entry & Timeline
+                let entry = RepoEntry(date: .now, repo: repo, bottomRepo: buttomRepo, configuration: configuration)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
@@ -58,7 +70,9 @@ struct RepoWatcherWidgetEntryView : View {
             case .systemLarge:
                 VStack(spacing: 36) {
                     RepoMediumView(repo: entry.repo)
-                    RepoMediumView(repo: entry.bottomRepo ?? MockData.repoTwo)
+                    if let bottomRepo = entry.bottomRepo { // only show repo when not nil
+                        RepoMediumView(repo: bottomRepo)
+                    }
                 }
             case .systemSmall, .systemExtraLarge, .accessoryCircular, .accessoryRectangular, .accessoryInline:
                 EmptyView()
