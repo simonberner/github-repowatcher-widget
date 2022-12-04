@@ -1,6 +1,6 @@
 //
-//  RepoWatcherWidget.swift
-//  RepoWatcherWidget
+//  CompactRepoWidget.swift
+//  CompactRepoWidget
 //
 //  Created by Simon Berner on 27.11.22.
 //
@@ -9,15 +9,15 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
+struct CompactRepoProvider: IntentTimelineProvider {
 
     // placeholder for the Widget Search (static mock data)
-    func placeholder(in context: Context) -> RepoEntry {
-        RepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: ConfigurationIntent())
+    func placeholder(in context: Context) -> CompactRepoEntry {
+        CompactRepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: ConfigurationIntent())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (RepoEntry) -> ()) {
-        let entry = RepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: configuration)
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (CompactRepoEntry) -> ()) {
+        let entry = CompactRepoEntry(date: Date(), repo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: configuration)
         completion(entry)
     }
 
@@ -42,7 +42,7 @@ struct Provider: IntentTimelineProvider {
                 }
 
                 // Create Entry & Timeline
-                let entry = RepoEntry(date: .now, repo: repo, bottomRepo: buttomRepo, configuration: configuration)
+                let entry = CompactRepoEntry(date: .now, repo: repo, bottomRepo: buttomRepo, configuration: configuration)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
@@ -52,16 +52,16 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
-struct RepoEntry: TimelineEntry {
+struct CompactRepoEntry: TimelineEntry {
     let date: Date
     let repo: Repository
     let bottomRepo: Repository? // second repo to show (optional because only needed for family .systemLarge)
     let configuration: ConfigurationIntent
 }
 
-struct RepoWatcherWidgetEntryView : View {
+struct CompactRepoEntryView : View {
     @Environment(\.widgetFamily) var family
-    var entry: RepoEntry
+    var entry: CompactRepoEntry
 
     var body: some View {
         switch family {
@@ -83,12 +83,12 @@ struct RepoWatcherWidgetEntryView : View {
 
 }
 
-struct RepoWatcherWidget: Widget {
-    let kind: String = "RepoWatcherWidget"
+struct CompactRepoWidget: Widget {
+    let kind: String = "CompactRepoWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            RepoWatcherWidgetEntryView(entry: entry)
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: CompactRepoProvider()) { entry in
+            CompactRepoEntryView(entry: entry)
         }
         .configurationDisplayName("GitHub Repo Watcher")
         .description("Keep an eye on one or two GitHub Repositories")
@@ -96,9 +96,9 @@ struct RepoWatcherWidget: Widget {
     }
 }
 
-struct RepoWatcherWidget_Previews: PreviewProvider {
+struct CompactRepoWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RepoWatcherWidgetEntryView(entry: RepoEntry(date: Date(),
+        CompactRepoEntryView(entry: CompactRepoEntry(date: Date(),
                                                     repo: MockData.repoOne,
                                                     bottomRepo: MockData.repoTwo,
                                                     configuration: ConfigurationIntent()))
