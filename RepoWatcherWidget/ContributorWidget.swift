@@ -12,19 +12,19 @@ import WidgetKit
 struct ContributorProvider: IntentTimelineProvider {
     // Provides a timeline entry representing a placeholder version of the widget for the search
     func placeholder(in context: Context) -> ContributorEntry {
-        ContributorEntry(date: .now, configuration: ConfigurationIntent())
+        ContributorEntry(date: .now, repo: MockData.repoOne, configuration: ConfigurationIntent())
     }
 
     // Provides the timeline entry that represents the current time and state of a widget.
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (ContributorEntry) -> Void) {
-        let entry = ContributorEntry(date: .now, configuration: configuration)
+        let entry = ContributorEntry(date: .now, repo: MockData.repoOne, configuration: configuration)
         completion(entry)
     }
 
     // Provides an array of timeline entries for the current time and, optionally any future times to update a widget.
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<ContributorEntry>) -> Void) {
         let nextUpdate = Date().addingTimeInterval(43200) // next update in the future (12 hours in seconds)
-        let entry = ContributorEntry(date: .now, configuration: configuration)
+        let entry = ContributorEntry(date: .now, repo: MockData.repoOne, configuration: configuration)
         let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
         completion(timeline)
     }
@@ -32,6 +32,7 @@ struct ContributorProvider: IntentTimelineProvider {
 
 struct ContributorEntry: TimelineEntry {
     var date: Date
+    var repo: Repository
     let configuration: ConfigurationIntent
 }
 
@@ -39,6 +40,10 @@ struct ContributorEntryView : View {
     var entry: ContributorEntry
 
     var body: some View {
+        VStack {
+            RepoMediumView(repo: entry.repo)
+            ContributorMediumView()
+        }
         Text(entry.date.formatted())
 
     }
@@ -61,6 +66,7 @@ struct ContributorWidget: Widget {
 struct ContributorWidget_Previews: PreviewProvider {
     static var previews: some View {
         ContributorEntryView(entry: ContributorEntry(date: Date(),
+                                                     repo: MockData.repoOne,
                                                     configuration: ConfigurationIntent()))
         .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
