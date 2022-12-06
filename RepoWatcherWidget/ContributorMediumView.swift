@@ -9,6 +9,9 @@ import SwiftUI
 import WidgetKit
 
 struct ContributorMediumView: View {
+
+    var repo: Repository
+
     var body: some View {
         VStack {
             HStack {
@@ -21,18 +24,18 @@ struct ContributorMediumView: View {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2),
                       alignment: .leading,
                       spacing: 20) {
-                ForEach(0..<4) { i in
+                ForEach(repo.contributors) { contributor in
                     HStack {
-                        Image(uiImage: UIImage(named: "avatar")!)
+                        Image(uiImage: UIImage(data: contributor.avatarData) ?? UIImage(named: "avatar")!)
                             .resizable()
                             .frame(width: 44, height: 44)
                             .clipShape(Circle())
 
                         VStack(alignment: .leading) {
-                            Text("simonberner")
+                            Text(contributor.login)
                                 .font(.caption)
                                 .minimumScaleFactor(0.7)
-                            Text("5")
+                            Text("\(contributor.contributions)")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                         }
@@ -46,7 +49,7 @@ struct ContributorMediumView: View {
 
 struct ContributorMediumView_Previews: PreviewProvider {
     static var previews: some View {
-        ContributorMediumView()
+        ContributorMediumView(repo: MockData.repoOne)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

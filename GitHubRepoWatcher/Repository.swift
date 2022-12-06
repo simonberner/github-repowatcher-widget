@@ -16,6 +16,7 @@ struct Repository {
     let openIssues: Int
     let pushedAt: String
     var avatarData: Data // Attaching the avatar image data to the (json) repository model
+    var contributors: [Contributor] = [] // initialized with an empty array
 }
 
 // With that extension we can make that type use the same structure as our JSON does,
