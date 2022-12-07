@@ -32,10 +32,14 @@ final class GitHubRepoWatcherTests: XCTestCase {
 
     func testThatApiCallReturnsContributors() async throws {
         // Arrange
+        let contributorsURL = "https://api.github.com/repos/simonberner/github-repowatcher-widget/contributors"
 
         // Act
+        let contributors = try await NetworkManager.shared.getContributors(atUrl: contributorsURL)
+        let firstContributor = contributors[0]
 
         // Assert
+        XCTAssertEqual(firstContributor.login, "simonberner")
     }
 
 //    func testPerformanceExample() throws {
