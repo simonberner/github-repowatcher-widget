@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "10750C45-E28E-433D-A9A5-C88498BDA832",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "GitHubRepoWatcherTests\/testPerformanceExample()"
+      ],
+      "target" : {
+        "containerPath" : "container:GitHubRepoWatcher.xcodeproj",
+        "identifier" : "15D2D6B22933A9D600AC35CC",
+        "name" : "GitHubRepoWatcherTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -78,6 +78,7 @@
 		152225D42937A47700A7BC2C /* RepoMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoMediumView.swift; sourceTree = "<group>"; };
 		1522B50C2934A1D1004B1EB0 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		1522B5102934FA2A004B1EB0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		153D74DD2940E35A00F4C152 /* ApiTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ApiTests.xctestplan; sourceTree = "<group>"; };
 		15800F39293CD5EB00B13A1B /* ContributorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorWidget.swift; sourceTree = "<group>"; };
 		15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorMediumView.swift; sourceTree = "<group>"; };
 		15B8B7BB293E876000AD12F4 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				15D2D6B72933A9D600AC35CC /* GitHubRepoWatcherTests.swift */,
+				153D74DD2940E35A00F4C152 /* ApiTests.xctestplan */,
 			);
 			path = GitHubRepoWatcherTests;
 			sourceTree = "<group>";
