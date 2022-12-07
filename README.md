@@ -39,6 +39,7 @@ This is a more advanced iOS16+ widget project to learn how to create a medium an
 * [Screenshots](#screenshots)
 * [Learnings](#learnings)
 * [GitHub API Call](#gitHub-api-call)
+* [Testing](#testing)
 * [Code Comments](#code-comments)
 * [Credits](#credits)
 
@@ -105,6 +106,9 @@ Point of contention:
     
 ## GitHub API Call
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
+
+## Testing
+I use the [Arrange, Act and Assert Pattern](https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/) for Unit Testing.
 
 ## Code Comments
 I love putting in the effort of adding comments to my code, [here is why](https://www.youtube.com/watch?v=1NEa-OcsTow).
