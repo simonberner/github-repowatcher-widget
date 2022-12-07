@@ -28,7 +28,7 @@ struct CompactRepoProvider: IntentTimelineProvider {
 
             do {
                 // Get Top Repo
-                var repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.google)
+                var repo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.githubRepoWatcher)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData ?? Data()
 

@@ -12,7 +12,7 @@ struct Contributor: Identifiable {
     let login: String
     let avatarUrl: String
     let contributions: Int
-    let avatarData: Data // additional, not part of the JSON
+    var avatarData: Data // additional, not part of the JSON
 }
 
 extension Contributor {
