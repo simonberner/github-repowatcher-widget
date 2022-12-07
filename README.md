@@ -68,6 +68,7 @@ A medium and large sized Widget that gets a GitHub repository and displays the f
 ## Screenshots
 
 ![widgets](widgets.png)
+![contributors](contributor-widget.png)
 
 ## Learnings
 - AsyncImage is not working for widgets.
@@ -76,8 +77,10 @@ A medium and large sized Widget that gets a GitHub repository and displays the f
     - Graphical attractive data
     - Quick information
 ### Widget Gallery
-- Point of contention: Apple recommends giving a Widget some placeholder (mock data) to show it in the Widget Gallery instead of doing any network calls.
+Point of contention:
+- Apple recommends giving a Widget some placeholder (mock data) to show it in the Widget Gallery instead of doing any network calls.
 (Note: Twitch does network calls in getSnapshot, but probably because of some business reasons)
+- But we want to show our users the best representation of our widgets, so how do we do that? Better mock-data?
 ### Alerts
 - Normally there are no error alerts shown to a user in a widget.
     - But there are cases where it makes sense to tell the user an issue (eg. 'Sign in with Google').
@@ -88,6 +91,10 @@ A medium and large sized Widget that gets a GitHub repository and displays the f
 ### JSON
 - [Codable: A type alias for Encodable and Decodable](https://www.swiftbysundell.com/basics/codable/)
 - [Ignoring invalid JSON elements when using Codable](https://www.swiftbysundell.com/articles/ignoring-invalid-json-elements-codable/)
+### Structured Concurrency
+- Async/await: 'try await' is like a guard statement, if it fails nothing is being executed below it (because it falls into the catch block)
+### Widget Bundle
+- If we have an App with different widget types, we can put them into a [WidgetBundle](https://developer.apple.com/documentation/swiftui/widgetbundle)
     
 ## GitHub API Call
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
