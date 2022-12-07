@@ -53,6 +53,11 @@ A medium and large sized Widget that gets a GitHub repository and displays the f
 - Number of forks
 - Number of open issues
 
+A large sized Widget that gets the (top 4) contributors of a GitHub repository and displays the following infos:
+- Login name
+- Avatar
+- Number of contributions made
+
 ## Tech Stack
 - Xcode 14.1
 - Swift 5.7.1
@@ -66,8 +71,10 @@ A medium and large sized Widget that gets a GitHub repository and displays the f
 - iPad >= iOS16+
 
 ## Screenshots
-
+Medium (one repo) and large (two repos) sized Widget with the above mentioned GitHub repository info.
 ![repo](compact-widgets.png)
+
+Large sized Widget with the above mentioned GitHub repository and contributors infos.
 ![contributors](contributor-widget.png)
 
 ## Learnings
