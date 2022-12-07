@@ -67,7 +67,7 @@ A medium and large sized Widget that gets a GitHub repository and displays the f
 
 ## Screenshots
 
-![widgets](widgets.png)
+![repo](compact-widgets.png)
 ![contributors](contributor-widget.png)
 
 ## Learnings
