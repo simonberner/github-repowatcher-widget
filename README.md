@@ -73,11 +73,9 @@ A large sized Widget that gets the (top 4) contributors of a GitHub repository a
 - iPad >= iOS16+
 
 ## Screenshots
-Medium (one repo) and large (two repos) sized Widget with the above mentioned GitHub repository info.
-![repo](compact-widgets.png)
-
-Large sized Widget with the above mentioned GitHub repository and contributors infos.
-![contributors](contributor-widget.png)
+| Medium/Large Widget | Large Widget |
+| :---: | :---: |
+| <img src="AppScreenshots/compact-widgets.png" height="100%" width="100%" > | <img src="AppScreenshots/contributor-widget.png" height="100%" width="100%" > |
 
 ## Learnings
 - AsyncImage is not working for widgets.
