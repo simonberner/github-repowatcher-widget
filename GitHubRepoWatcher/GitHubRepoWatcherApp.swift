@@ -11,7 +11,7 @@ import SwiftUI
 struct GitHubRepoWatcherApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GitHubRepoWatcherView()
         }
     }
 }

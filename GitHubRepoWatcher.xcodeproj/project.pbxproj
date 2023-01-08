@@ -17,7 +17,7 @@
 		15B8B7BC293E876000AD12F4 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7BB293E876000AD12F4 /* Contributor.swift */; };
 		15B8B7BD293E876000AD12F4 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7BB293E876000AD12F4 /* Contributor.swift */; };
 		15D2D6A72933A9D200AC35CC /* GitHubRepoWatcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */; };
-		15D2D6A92933A9D200AC35CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6A82933A9D200AC35CC /* ContentView.swift */; };
+		15D2D6A92933A9D200AC35CC /* GitHubRepoWatcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6A82933A9D200AC35CC /* GitHubRepoWatcherView.swift */; };
 		15D2D6AB2933A9D500AC35CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D2D6AA2933A9D500AC35CC /* Assets.xcassets */; };
 		15D2D6AE2933A9D500AC35CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D2D6AD2933A9D500AC35CC /* Preview Assets.xcassets */; };
 		15D2D6B82933A9D600AC35CC /* GitHubRepoWatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6B72933A9D600AC35CC /* GitHubRepoWatcherTests.swift */; };
@@ -84,7 +84,7 @@
 		15B8B7BB293E876000AD12F4 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
 		15D2D6A32933A9D200AC35CC /* GitHubRepoWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepoWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoWatcherApp.swift; sourceTree = "<group>"; };
-		15D2D6A82933A9D200AC35CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		15D2D6A82933A9D200AC35CC /* GitHubRepoWatcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoWatcherView.swift; sourceTree = "<group>"; };
 		15D2D6AA2933A9D500AC35CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D2D6AD2933A9D500AC35CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		15D2D6B32933A9D600AC35CC /* GitHubRepoWatcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubRepoWatcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */,
-				15D2D6A82933A9D200AC35CC /* ContentView.swift */,
+				15D2D6A82933A9D200AC35CC /* GitHubRepoWatcherView.swift */,
 				1522B50C2934A1D1004B1EB0 /* Repository.swift */,
 				15B8B7BB293E876000AD12F4 /* Contributor.swift */,
 				1522B5102934FA2A004B1EB0 /* NetworkManager.swift */,
@@ -390,7 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D2D6A92933A9D200AC35CC /* ContentView.swift in Sources */,
+				15D2D6A92933A9D200AC35CC /* GitHubRepoWatcherView.swift in Sources */,
 				15D3F4D2293A0ACF00874205 /* MockData.swift in Sources */,
 				15B8B7BC293E876000AD12F4 /* Contributor.swift in Sources */,
 				15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
