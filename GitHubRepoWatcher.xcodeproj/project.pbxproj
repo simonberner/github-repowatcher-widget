@@ -12,6 +12,7 @@
 		1522B50F2934B7B0004B1EB0 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B50C2934A1D1004B1EB0 /* Repository.swift */; };
 		1522B5112934FA2A004B1EB0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B5102934FA2A004B1EB0 /* NetworkManager.swift */; };
 		1522B5122934FA2A004B1EB0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B5102934FA2A004B1EB0 /* NetworkManager.swift */; };
+		15449CC7296B0A450053541B /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15449CC6296B0A450053541B /* UserDefaults+Ext.swift */; };
 		15800F3A293CD5EB00B13A1B /* ContributorWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800F39293CD5EB00B13A1B /* ContributorWidget.swift */; };
 		15B8B7BA293E82CC00AD12F4 /* ContributorMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */; };
 		15B8B7BC293E876000AD12F4 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7BB293E876000AD12F4 /* Contributor.swift */; };
@@ -79,6 +80,8 @@
 		1522B50C2934A1D1004B1EB0 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		1522B5102934FA2A004B1EB0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		153D74DD2940E35A00F4C152 /* ApiTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ApiTests.xctestplan; sourceTree = "<group>"; };
+		15449CC5296B08380053541B /* GitHubRepoWatcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubRepoWatcher.entitlements; sourceTree = "<group>"; };
+		15449CC6296B0A450053541B /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		15800F39293CD5EB00B13A1B /* ContributorWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorWidget.swift; sourceTree = "<group>"; };
 		15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorMediumView.swift; sourceTree = "<group>"; };
 		15B8B7BB293E876000AD12F4 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
@@ -166,11 +169,13 @@
 		15D2D6A52933A9D200AC35CC /* GitHubRepoWatcher */ = {
 			isa = PBXGroup;
 			children = (
+				15449CC5296B08380053541B /* GitHubRepoWatcher.entitlements */,
 				15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */,
 				15D2D6A82933A9D200AC35CC /* GitHubRepoWatcherView.swift */,
 				1522B50C2934A1D1004B1EB0 /* Repository.swift */,
 				15B8B7BB293E876000AD12F4 /* Contributor.swift */,
 				1522B5102934FA2A004B1EB0 /* NetworkManager.swift */,
+				15449CC6296B0A450053541B /* UserDefaults+Ext.swift */,
 				15D2D6AA2933A9D500AC35CC /* Assets.xcassets */,
 				15D2D6AC2933A9D500AC35CC /* Preview Content */,
 			);
@@ -394,6 +399,7 @@
 				15D3F4D2293A0ACF00874205 /* MockData.swift in Sources */,
 				15B8B7BC293E876000AD12F4 /* Contributor.swift in Sources */,
 				15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
+				15449CC7296B0A450053541B /* UserDefaults+Ext.swift in Sources */,
 				1522B5112934FA2A004B1EB0 /* NetworkManager.swift in Sources */,
 				15D2D6A72933A9D200AC35CC /* GitHubRepoWatcherApp.swift in Sources */,
 				1522B50D2934A1D1004B1EB0 /* Repository.swift in Sources */,
@@ -576,6 +582,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GitHubRepoWatcher/GitHubRepoWatcher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GitHubRepoWatcher/Preview Content\"";
@@ -606,6 +613,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GitHubRepoWatcher/GitHubRepoWatcher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GitHubRepoWatcher/Preview Content\"";
