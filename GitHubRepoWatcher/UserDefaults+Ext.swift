@@ -9,8 +9,10 @@ import Foundation
 
 extension UserDefaults {
 
-    /// Shared UserDefaults database with the AppGroup name
+    /// Shared UserDefaults database with the AppGroup identifier: _group.dev.simonberner.RepoWatcher_
     static var shared: UserDefaults {
         UserDefaults(suiteName: "group.dev.simonberner.RepoWatcher")!
     }
+
+    static let repoKey = "repos"
 }
