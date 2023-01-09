@@ -1,5 +1,5 @@
 //
-//  ContributorWidget.swift
+//  SingelRepoWidget.swift
 //  RepoWatcherWidgetExtension
 //
 //  Created by Simon Berner on 04.12.22.
@@ -35,22 +35,25 @@ struct SingleRepoProvider: IntentTimelineProvider {
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData ?? Data()
 
-                // Get Contributors
-                let contributors = try await NetworkManager.shared.getContributors(atUrl: repoToShow + "/contributors")
+                // Only do the call when the widget family is large
+                if context.family == .systemLarge {
+                    // Get Contributors
+                    let contributors = try await NetworkManager.shared.getContributors(atUrl: repoToShow + "/contributors")
 
-                // Filter out the top 4 (with the most contributions)
-                // prefix(4): this gives us the first 4 contributors
-                // (GitHub already gives us the a JSON with the contributors in a descending order which have
-                // the most contributions)
-                var topFour = Array(contributors.prefix(4))
+                    // Filter out the top 4 (with the most contributions)
+                    // prefix(4): this gives us the first 4 contributors
+                    // (GitHub already gives us the JSON with the contributors
+                    // in a descending order which have the most contributions)
+                    var topFour = Array(contributors.prefix(4))
 
-                // Get avatar for each of the topFour and assign it to each of them
-                for i in topFour.indices {
-                    let avatarData = await NetworkManager.shared.downloadImageData(from: topFour[i].avatarUrl)
-                    topFour[i].avatarData = avatarData ?? Data()
+                    // Get avatar for each of the topFour and assign it to each of them
+                    for i in topFour.indices {
+                        let avatarData = await NetworkManager.shared.downloadImageData(from: topFour[i].avatarUrl)
+                        topFour[i].avatarData = avatarData ?? Data()
+                    }
+                    repo.contributors = topFour
                 }
 
-                repo.contributors = topFour
 
                 // Create entry in timeline
                 let entry = SingleRepoEntry(date: .now, repo: repo, configuration: configuration)
@@ -71,13 +74,24 @@ struct SingleRepoEntry: TimelineEntry {
 }
 
 struct SingleRepoEntryView : View {
+    @Environment(\.widgetFamily) var family
     var entry: SingleRepoEntry
 
     var body: some View {
-        VStack {
-            RepoMediumView(repo: entry.repo)
-            ContributorMediumView(repo: entry.repo)
+        switch family {
+            case .systemMedium:
+                RepoMediumView(repo: entry.repo)
+            case .systemLarge:
+                VStack {
+                    RepoMediumView(repo: entry.repo)
+                    ContributorMediumView(repo: entry.repo)
+                }
+            case .systemSmall, .systemExtraLarge, .accessoryCircular, .accessoryRectangular, .accessoryInline:
+                EmptyView()
+            @unknown default:
+                EmptyView()
         }
+
     }
 
 }
@@ -89,17 +103,17 @@ struct SingleRepoWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: SingleRepoProvider()) { entry in
             SingleRepoEntryView(entry: entry)
         }
-        .configurationDisplayName("Contributors")
-        .description("Keep track of a repository's top contributors")
-        .supportedFamilies([.systemLarge])
+        .configurationDisplayName("Single Repo")
+        .description("Track a single repository")
+        .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 
-struct ContributorWidget_Previews: PreviewProvider {
+struct SingleRepoWidget_Previews: PreviewProvider {
     static var previews: some View {
         SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
                                                      repo: MockData.repoOne,
                                                      configuration: ConfigurationIntent()))
-        .previewContext(WidgetPreviewContext(family: .systemLarge))
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
