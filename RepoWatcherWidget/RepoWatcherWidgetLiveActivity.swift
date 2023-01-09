@@ -1,6 +1,6 @@
 //
 //  RepoWatcherWidgetLiveActivity.swift
-//  CompactRepoWidget
+//  DoubleRepoWidget
 //
 //  Created by Simon Berner on 27.11.22.
 //
