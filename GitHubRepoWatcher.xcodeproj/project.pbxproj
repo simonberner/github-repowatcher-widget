@@ -14,6 +14,8 @@
 		1522B5122934FA2A004B1EB0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B5102934FA2A004B1EB0 /* NetworkManager.swift */; };
 		15449CC7296B0A450053541B /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15449CC6296B0A450053541B /* UserDefaults+Ext.swift */; };
 		15800F3A293CD5EB00B13A1B /* SingleRepoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800F39293CD5EB00B13A1B /* SingleRepoWidget.swift */; };
+		15A1A182296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15A1A181296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition */; };
+		15A1A183296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15A1A181296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition */; };
 		15B8B7BA293E82CC00AD12F4 /* ContributorMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */; };
 		15B8B7BC293E876000AD12F4 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7BB293E876000AD12F4 /* Contributor.swift */; };
 		15B8B7BD293E876000AD12F4 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7BB293E876000AD12F4 /* Contributor.swift */; };
@@ -83,6 +85,8 @@
 		15449CC5296B08380053541B /* GitHubRepoWatcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubRepoWatcher.entitlements; sourceTree = "<group>"; };
 		15449CC6296B0A450053541B /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		15800F39293CD5EB00B13A1B /* SingleRepoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoWidget.swift; sourceTree = "<group>"; };
+		15A1A181296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectRepoIntents.intentdefinition; sourceTree = "<group>"; };
+		15A1A184296DBE2100904FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorMediumView.swift; sourceTree = "<group>"; };
 		15B8B7BB293E876000AD12F4 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
 		15D2D6A32933A9D200AC35CC /* GitHubRepoWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepoWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +182,7 @@
 		15D2D6A52933A9D200AC35CC /* GitHubRepoWatcher */ = {
 			isa = PBXGroup;
 			children = (
+				15A1A184296DBE2100904FF1 /* Info.plist */,
 				15449CC5296B08380053541B /* GitHubRepoWatcher.entitlements */,
 				15D2D6A62933A9D200AC35CC /* GitHubRepoWatcherApp.swift */,
 				15D2D6A82933A9D200AC35CC /* GitHubRepoWatcherView.swift */,
@@ -238,6 +243,7 @@
 				15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */,
 				15D2D6E32933B7F700AC35CC /* Assets.xcassets */,
 				15D2D6E52933B7F700AC35CC /* Info.plist */,
+				15A1A181296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition */,
 			);
 			path = RepoWatcherWidget;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D2D6A92933A9D200AC35CC /* GitHubRepoWatcherView.swift in Sources */,
+				15A1A182296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition in Sources */,
 				15D3F4D2293A0ACF00874205 /* MockData.swift in Sources */,
 				15B8B7BC293E876000AD12F4 /* Contributor.swift in Sources */,
 				15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
@@ -445,6 +452,7 @@
 				152225D52937A47700A7BC2C /* RepoMediumView.swift in Sources */,
 				15800F3A293CD5EB00B13A1B /* SingleRepoWidget.swift in Sources */,
 				15B8B7BA293E82CC00AD12F4 /* ContributorMediumView.swift in Sources */,
+				15A1A183296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition in Sources */,
 				15B8B7BD293E876000AD12F4 /* Contributor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,6 +605,7 @@
 				DEVELOPMENT_TEAM = XLY4UW5GHZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GitHubRepoWatcher/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -628,6 +637,7 @@
 				DEVELOPMENT_TEAM = XLY4UW5GHZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GitHubRepoWatcher/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
