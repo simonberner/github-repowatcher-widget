@@ -7,13 +7,13 @@ This is a more advanced iOS16+ widget project to learn how to create a medium an
         <img src="https://img.shields.io/badge/iOS-16+-blue.svg?style=for-the-badge" />
     </a>
     <a href="https://www.swift.org/">
-        <img src="https://img.shields.io/badge/Swift-5.7.1-brightgreen.svg?style=for-the-badge&logo=swift" />
+        <img src="https://img.shields.io/badge/Swift-5.7.2-brightgreen.svg?style=for-the-badge&logo=swift" />
     </a>
     <a href="https://developer.apple.com/xcode/swiftui">
         <img src="https://img.shields.io/badge/SwiftUI-blue.svg?style=for-the-badge&logo=swift&logoColor=black" />
     </a>
     <a href="https://developer.apple.com/xcode">
-        <img src="https://img.shields.io/badge/Xcode-14.1-blue.svg?style=for-the-badge" />
+        <img src="https://img.shields.io/badge/Xcode-14.2-blue.svg?style=for-the-badge" />
     </a>
     <a href="https://mastodon.green/@simonberner">
         <img src="https://img.shields.io/badge/Contact-@simonberner-orange?style=for-the-badge" alt="mastodon.green/@simonberner" />
@@ -60,13 +60,16 @@ A large sized Widget that gets the (top 4) contributors of a GitHub repository a
 - Avatar
 - Number of contributions made
 
+An App Group is setup among the GitHubRepoWatcher and the RepoWatcherIntents target to share the same UserDefaults database.
+
 ## Tech Stack
-- Xcode 14.1
-- Swift 5.7.1
+- Xcode 14.2
+- Swift 5.7.2
 
 ## Frameworks
 - SwiftUI
-- WidgetKit
+- [WidgetKit](https://developer.apple.com/documentation/widgetkit)
+- [App Intents](https://developer.apple.com/documentation/appintents/)
 
 ## Device Compatibility
 - iPhone >= iOS16+
@@ -102,6 +105,12 @@ Point of contention:
 - Async/await: 'try await' is like a guard statement, if it fails nothing is being executed below it (because it falls into the catch block)
 ### Widget Bundle
 - If we have an App with different widget types, we can put them into a [WidgetBundle](https://developer.apple.com/documentation/swiftui/widgetbundle)
+### Widget Configurations
+- Configurations introduces _(SiriKit) Intents Definitions File_
+- 1. Setup an intents definition file
+- 1.1 Info: The intent definition file creates lots of code for you (e.g protocols, classes)
+- 2. Setup an IntentHandler which is handled in an intents extension target
+- 3. Add the App Group as capability to the intents extension target
     
 ## GitHub API Call
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
