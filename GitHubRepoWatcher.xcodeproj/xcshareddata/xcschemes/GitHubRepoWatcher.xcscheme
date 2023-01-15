@@ -28,6 +28,17 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "15D2D6BC2933A9D600AC35CC"
+               BuildableName = "GitHubRepoWatcherUITests.xctest"
+               BlueprintName = "GitHubRepoWatcherUITests"
+               ReferencedContainer = "container:GitHubRepoWatcher.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

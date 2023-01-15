@@ -85,6 +85,7 @@ enum NetworkError: Error {
 
 // some mock urls
 enum RepoURL {
+    static let prefix = "https://api.github.com/repos/"
     static let githubRepoWatcher = "https://api.github.com/repos/simonberner/github-repowatcher-widget"
     static let publish = "https://api.github.com/repos/johnsundell/publish"
     static let google = "https://api.github.com/repos/google/GoogleSignIn-iOS"

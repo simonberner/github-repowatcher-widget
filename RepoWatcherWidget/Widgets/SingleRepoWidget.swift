@@ -12,17 +12,17 @@ import WidgetKit
 struct SingleRepoProvider: IntentTimelineProvider {
     // Provides a timeline entry representing a placeholder version of the widget for the search
     func placeholder(in context: Context) -> SingleRepoEntry {
-        SingleRepoEntry(date: .now, repo: MockData.repoOne, configuration: ConfigurationIntent())
+        SingleRepoEntry(date: .now, repo: MockData.repoOne)
     }
 
     // Provides the timeline entry that represents the current time and state of a widget.
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SingleRepoEntry) -> Void) {
-        let entry = SingleRepoEntry(date: .now, repo: MockData.repoOne, configuration: configuration)
+    func getSnapshot(for configuration: SelectSingleRepoIntent, in context: Context, completion: @escaping (SingleRepoEntry) -> Void) {
+        let entry = SingleRepoEntry(date: .now, repo: MockData.repoOne)
         completion(entry)
     }
 
     // Provides an array of timeline entries for the current time and, optionally any future times to update a widget.
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SingleRepoEntry>) -> Void) {
+    func getTimeline(for configuration: SelectSingleRepoIntent, in context: Context, completion: @escaping (Timeline<SingleRepoEntry>) -> Void) {
 
         Task {
             // Set update to every 43200 seconds (12 hours)
@@ -30,7 +30,7 @@ struct SingleRepoProvider: IntentTimelineProvider {
 
             do {
                 // Get Repo and avatar
-                let repoToShow = RepoURL.google
+                let repoToShow = RepoURL.prefix + configuration.repo!
                 var repo = try await NetworkManager.shared.getRepo(atUrl: repoToShow)
                 let avatarImageData = await NetworkManager.shared.downloadImageData(from: repo.owner.avatarUrl)
                 repo.avatarData = avatarImageData ?? Data()
@@ -56,7 +56,7 @@ struct SingleRepoProvider: IntentTimelineProvider {
 
 
                 // Create entry in timeline
-                let entry = SingleRepoEntry(date: .now, repo: repo, configuration: configuration)
+                let entry = SingleRepoEntry(date: .now, repo: repo)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
@@ -70,7 +70,6 @@ struct SingleRepoProvider: IntentTimelineProvider {
 struct SingleRepoEntry: TimelineEntry {
     var date: Date
     var repo: Repository
-    let configuration: ConfigurationIntent
 }
 
 struct SingleRepoEntryView : View {
@@ -100,7 +99,7 @@ struct SingleRepoWidget: Widget {
     let kind: String = "ContributorWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: SingleRepoProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectSingleRepoIntent.self, provider: SingleRepoProvider()) { entry in
             SingleRepoEntryView(entry: entry)
         }
         .configurationDisplayName("Single Repo")
@@ -112,8 +111,7 @@ struct SingleRepoWidget: Widget {
 struct SingleRepoWidget_Previews: PreviewProvider {
     static var previews: some View {
         SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
-                                                     repo: MockData.repoOne,
-                                                     configuration: ConfigurationIntent()))
+                                                     repo: MockData.repoOne))
         .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
