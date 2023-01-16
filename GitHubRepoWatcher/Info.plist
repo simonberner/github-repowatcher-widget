@@ -5,6 +5,7 @@
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>SelectSingleRepoIntent</string>
+		<string>SelectTwoReposIntent</string>
 	</array>
 </dict>
 </plist>
