@@ -13,33 +13,33 @@ struct DoubleRepoProvider: IntentTimelineProvider {
 
     // placeholder for the Widget Search (static mock data)
     func placeholder(in context: Context) -> DoubleRepoEntry {
-        DoubleRepoEntry(date: Date(), topRepo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: ConfigurationIntent())
+        DoubleRepoEntry(date: Date(), topRepo: MockData.repoOne, bottomRepo: MockData.repoTwo)
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (DoubleRepoEntry) -> ()) {
-        let entry = DoubleRepoEntry(date: Date(), topRepo: MockData.repoOne, bottomRepo: MockData.repoTwo, configuration: configuration)
+    func getSnapshot(for configuration: SelectTwoReposIntent, in context: Context, completion: @escaping (DoubleRepoEntry) -> ()) {
+        let entry = DoubleRepoEntry(date: Date(), topRepo: MockData.repoOne, bottomRepo: MockData.repoTwo)
         completion(entry)
     }
 
     // get updated timeline entry after each interval
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: SelectTwoReposIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
             let nextUpdate = Date().addingTimeInterval(43200) // 12 hours in seconds
 
             do {
                 // Get top Repo
-                var topRepo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.githubRepoWatcher)
+                var topRepo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.prefix + configuration.topRepo!)
                 let topAvatarImageData = await NetworkManager.shared.downloadImageData(from: topRepo.owner.avatarUrl)
                 topRepo.avatarData = topAvatarImageData ?? Data()
 
                 // Get bottom Repo
-                var bottomRepo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.publish)
+                var bottomRepo = try await NetworkManager.shared.getRepo(atUrl: RepoURL.prefix + configuration.bottomRepo!)
                 // force unwrap 'buttomRepo' because if the above call fails, the below steps won't be executed
                 let bottomAvatarImageData = await NetworkManager.shared.downloadImageData(from: bottomRepo.owner.avatarUrl)
                 bottomRepo.avatarData = bottomAvatarImageData ?? Data()
 
                 // Create Entry & Timeline
-                let entry = DoubleRepoEntry(date: .now, topRepo: topRepo, bottomRepo: bottomRepo, configuration: configuration)
+                let entry = DoubleRepoEntry(date: .now, topRepo: topRepo, bottomRepo: bottomRepo)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
@@ -53,7 +53,6 @@ struct DoubleRepoEntry: TimelineEntry {
     let date: Date
     let topRepo: Repository
     let bottomRepo: Repository
-    let configuration: ConfigurationIntent
 }
 
 struct DoubleRepoEntryView : View {
@@ -74,7 +73,7 @@ struct DoubleRepoWidget: Widget {
     let kind: String = "DoubleRepoWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: DoubleRepoProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectTwoReposIntent.self, provider: DoubleRepoProvider()) { entry in
             DoubleRepoEntryView(entry: entry)
         }
         .configurationDisplayName("GitHub Repo Watcher")
@@ -87,8 +86,7 @@ struct DoubleRepoWidget_Previews: PreviewProvider {
     static var previews: some View {
         DoubleRepoEntryView(entry: DoubleRepoEntry(date: Date(),
                                                    topRepo: MockData.repoOne,
-                                                   bottomRepo: MockData.repoTwo,
-                                                   configuration: ConfigurationIntent()))
+                                                   bottomRepo: MockData.repoTwo))
         .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
