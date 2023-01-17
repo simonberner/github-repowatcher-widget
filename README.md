@@ -4,7 +4,7 @@ This is a more advanced iOS16+ widget project to learn how to create a medium an
 
 <p align="center">
     <a href="https://en.wikipedia.org/wiki/IOS">
-        <img src="https://img.shields.io/badge/iOS-16+-blue.svg?style=for-the-badge" />
+        <img src="https://img.shields.io/badge/iOS-16.2+-blue.svg?style=for-the-badge" />
     </a>
     <a href="https://www.swift.org/">
         <img src="https://img.shields.io/badge/Swift-5.7.2-brightgreen.svg?style=for-the-badge&logo=swift" />
@@ -72,8 +72,8 @@ An App Group is setup among the GitHubRepoWatcher and the RepoWatcherIntents tar
 - [App Intents](https://developer.apple.com/documentation/appintents/)
 
 ## Device Compatibility
-- iPhone >= iOS16+
-- iPad >= iOS16+
+- iPhone >= iOS16.2+
+- iPad >= iOS16.2+
 
 ## Screenshots
 | Medium/Large Widget | Large Widget |
