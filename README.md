@@ -78,7 +78,19 @@ An App Group is setup among the GitHubRepoWatcher and the RepoWatcherIntents tar
 ## Screenshots
 | Medium/Large Widget | Large Widget |
 | :---: | :---: |
-| <img src="AppScreenshots/compact-widgets.png" height="100%" width="100%" > | <img src="AppScreenshots/contributor-widget.png" height="100%" width="100%" > |
+| <img src="AppScreenshots/compact-widgets.webp" height="98%" width="98%" > | <img src="AppScreenshots/contributor-widget.webp" height="100%" width="100%" > |
+
+| Edit Widget | Widget Intent Configurations |
+| :---: | :---: |
+| <img src="AppScreenshots/double-repo-widget-edit.webp" height="100%" width="100%" > | <img src="AppScreenshots/double-repo-widget-configuration.webp" height="90%" width="90%" > |
+
+| Lock Screen Widgets | Lock Screen Conf |
+| :---: | :---: |
+| <img src="AppScreenshots/lock-screen-widgets.webp" height="100%" width="100%" > | <img src="AppScreenshots/lock-screen-widgets-rect-circ.webp" height="100%" width="100%" > |
+
+| Lock Screen Conf | App Main View |
+| :---: | :---: |
+| <img src="AppScreenshots/lock-screen-widget-inline.webp" height="98%" width="98%" > | <img src="AppScreenshots/app.webp" height="100%" width="100%" > |
 
 ## Learnings
 - AsyncImage is not working for widgets.
@@ -111,6 +123,9 @@ Point of contention:
 - 1.1 Info: The intent definition file creates lots of code for you (e.g protocols, classes)
 - 2. Setup an IntentHandler which is handled in an intents extension target
 - 3. Add the App Group as capability to the intents extension target
+### Lock Screen Widget
+- Is just another small view
+- Lock screen widget families are: .accessoryInline, .accessoryRectangular, .accessoryCircular
     
 ## GitHub API Call
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
