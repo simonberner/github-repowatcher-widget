@@ -10,10 +10,6 @@ import WidgetKit
 
 struct RepoMediumView: View {
     let repo: Repository
-    let formatter = ISO8601DateFormatter()
-    var daysSinceLastActivity: Int {
-        calculateDaysSinceLastActivity(from: repo.pushedAt)
-    }
 
     var body: some View {
         HStack {
@@ -43,13 +39,13 @@ struct RepoMediumView: View {
             Spacer()
 
             VStack {
-                Text("\(daysSinceLastActivity)")
+                Text("\(repo.daysSinceLastActivity)")
                     .bold()
                     .font(.system(size: 70))
                     .frame(width: 90)
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
-                    .foregroundColor(daysSinceLastActivity < 50 ? .green : .red)
+                    .foregroundColor(repo.daysSinceLastActivity < 50 ? .green : .red)
 
                 Text("days ago")
                     .font(.caption2)
@@ -57,12 +53,6 @@ struct RepoMediumView: View {
             }
         }
         .padding()
-    }
-
-    // TODO: refactor out?
-    private func calculateDaysSinceLastActivity(from dateString: String) -> Int {
-        let lastActivityDate = formatter.date(from: dateString) ?? .now
-        return Calendar.current.dateComponents([.day], from: lastActivityDate, to: .now).day ?? 0
     }
 }
 

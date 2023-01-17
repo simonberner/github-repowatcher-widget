@@ -17,6 +17,12 @@ struct Repository {
     let pushedAt: String
     var avatarData: Data // Attaching the avatar image data to the (json) repository model
     var contributors: [Contributor] = [] // initialized with an empty array
+
+    var daysSinceLastActivity: Int {
+        let formatter = ISO8601DateFormatter() // DateFormatter is expensive in creation but we are not creating a new one that frequently here
+        let lastActivityDate = formatter.date(from: pushedAt) ?? .now
+        return Calendar.current.dateComponents([.day], from: lastActivityDate, to: .now).day ?? 0
+    }
 }
 
 // With that extension we can make that type use the same structure as our JSON does,
