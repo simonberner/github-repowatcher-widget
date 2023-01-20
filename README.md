@@ -1,6 +1,4 @@
-# GitHub Repo Watcher Widget
-
-This is a more advanced iOS16+ widget project to learn how to create a medium and large widget which relies on network calls to update its content.
+<h1 align=center>GitHub Repo Watcher Widget</h1>
 
 <p align="center">
     <a href="https://en.wikipedia.org/wiki/IOS">
@@ -28,6 +26,8 @@ This is a more advanced iOS16+ widget project to learn how to create a medium an
         <img src="https://img.shields.io/badge/license-MIT-black.svg?style=for-the-badge" />
     </a>
 </p>
+
+This is a more advanced iOS16+ widget project to learn how to create a medium and large widget which relies on network calls to update its content.
 
 ---
 
@@ -126,6 +126,7 @@ Point of contention:
 ### Lock Screen Widget
 - Is just another small view
 - Lock screen widget families are: .accessoryInline, .accessoryRectangular, .accessoryCircular
+- On the lock screen: each widget of the same widget type (here GitHubRepo Watcher), can have its own configuration
     
 ## GitHub API Call
 - [Get a repository](https://docs.github.com/en/rest/repos/repos#get-a-repository)
@@ -141,4 +142,9 @@ When I create PRs I stick to [this guideline](https://www.youtube.com/watch?v=_s
 
 ## Credits
 🙏🏽 Sean Allen
+
+<hr>
+<p align="center">
+Made with a 🙂 <a href="https://simonberner.dev">Simon Berner
+</p>
 
