@@ -5,13 +5,13 @@
         <img src="https://img.shields.io/badge/iOS-16.2+-blue.svg?style=for-the-badge" />
     </a>
     <a href="https://www.swift.org/">
-        <img src="https://img.shields.io/badge/Swift-5.7.2-brightgreen.svg?style=for-the-badge&logo=swift" />
+        <img src="https://img.shields.io/badge/Swift-5.9-brightgreen.svg?style=for-the-badge&logo=swift" />
     </a>
     <a href="https://developer.apple.com/xcode/swiftui">
         <img src="https://img.shields.io/badge/SwiftUI-blue.svg?style=for-the-badge&logo=swift&logoColor=black" />
     </a>
     <a href="https://developer.apple.com/xcode">
-        <img src="https://img.shields.io/badge/Xcode-14.2-blue.svg?style=for-the-badge" />
+        <img src="https://img.shields.io/badge/Xcode-15-blue.svg?style=for-the-badge" />
     </a>
     <a href="https://mastodon.green/@simonberner">
         <img src="https://img.shields.io/badge/Contact-@simonberner-orange?style=for-the-badge" alt="mastodon.green/@simonberner" />
@@ -63,8 +63,8 @@ A large sized Widget that gets the (top 4) contributors of a GitHub repository a
 An App Group is setup among the GitHubRepoWatcher and the RepoWatcherIntents target to share the same UserDefaults database.
 
 ## Tech Stack
-- Xcode 14.2
-- Swift 5.7.2
+- Xcode 15.0
+- Swift 5.9
 
 ## Frameworks
 - SwiftUI
