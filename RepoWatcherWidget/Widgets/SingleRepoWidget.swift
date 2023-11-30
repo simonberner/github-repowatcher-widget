@@ -79,11 +79,25 @@ struct SingleRepoEntryView : View {
     var body: some View {
         switch family {
             case .systemMedium:
-                RepoMediumView(repo: entry.repo)
-            case .systemLarge:
-                VStack {
+                if #available(iOS 17, *) {
+                    // adopt for container background
                     RepoMediumView(repo: entry.repo)
-                    ContributorMediumView(repo: entry.repo)
+                        .containerBackground(for: .widget) { }
+                } else {
+                    RepoMediumView(repo: entry.repo)
+                }
+            case .systemLarge:
+                if #available(iOS 17, *) {
+                    VStack {
+                        RepoMediumView(repo: entry.repo)
+                        ContributorMediumView(repo: entry.repo)
+                    }
+                    .containerBackground(for: .widget) { }
+                } else {
+                    VStack {
+                        RepoMediumView(repo: entry.repo)
+                        ContributorMediumView(repo: entry.repo)
+                    }
                 }
             // Lock Screen Widget Families
             case .accessoryInline:
@@ -145,7 +159,12 @@ struct SingleRepoWidget: Widget {
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectSingleRepoIntent.self, provider: SingleRepoProvider()) { entry in
-            SingleRepoEntryView(entry: entry)
+            if #available(iOS 17, *) {
+                SingleRepoEntryView(entry: entry)
+                    .containerBackground(for: .widget) { }
+            } else {
+                SingleRepoEntryView(entry: entry)
+            }
         }
         .configurationDisplayName("Single Repo")
         .description("Track a single repository")
@@ -159,8 +178,15 @@ struct SingleRepoWidget: Widget {
 
 struct SingleRepoWidget_Previews: PreviewProvider {
     static var previews: some View {
-        SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
-                                                     repo: MockData.repoOne))
-        .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+        if #available(iOS 17, *) {
+            SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
+                                                         repo: MockData.repoOne))
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            .containerBackground(for: .widget) { }
+        } else {
+            SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
+                                                         repo: MockData.repoOne))
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+        }
     }
 }
