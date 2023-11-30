@@ -52,7 +52,7 @@ struct DoubleRepoProvider: IntentTimelineProvider {
 struct DoubleRepoEntry: TimelineEntry {
     let date: Date
     let topRepo: Repository
-    let bottomRepo: Repository
+    let bottomRepo: Repository?
 }
 
 struct DoubleRepoEntryView : View {
