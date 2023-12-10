@@ -65,8 +65,8 @@ struct DoubleRepoEntryView : View {
                 RepoMediumView(repo: bottomRepo)
             }
         }
+        .containerBackground(for: .widget) {}
     }
-
 }
 
 struct DoubleRepoWidget: Widget {

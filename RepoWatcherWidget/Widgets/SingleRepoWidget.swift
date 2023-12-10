@@ -101,48 +101,102 @@ struct SingleRepoEntryView : View {
                 }
             // Lock Screen Widget Families
             case .accessoryInline:
-                Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
+                if #available(iOS 17, *) {
+                    Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
+                        .containerBackground(for: .widget) { }
+                } else {
+                    Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
+                }
             case .accessoryRectangular:
-                VStack(alignment: .leading) {
-                    Text(entry.repo.name)
-                        .font(.headline)
-                    Text("\(entry.repo.daysSinceLastActivity) days")
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .aspectRatio(contentMode: .fit)
-
-                        Text("\(entry.repo.watchers)")
-
-                        Image(systemName: "tuningfork")
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .aspectRatio(contentMode: .fit)
-
-                        Text("\(entry.repo.forks)")
-
-                        if entry.repo.hasIssues {
-                            Image(systemName: "exclamationmark.triangle.fill")
+                if #available(iOS 17, *) {
+                    VStack(alignment: .leading) {
+                        Text(entry.repo.name)
+                            .font(.headline)
+                        Text("\(entry.repo.daysSinceLastActivity) days")
+                        HStack {
+                            Image(systemName: "star.fill")
                                 .resizable()
                                 .frame(width: 12, height: 12)
                                 .aspectRatio(contentMode: .fit)
 
-                            Text("\(entry.repo.openIssues)")
-                        }
+                            Text("\(entry.repo.watchers)")
 
+                            Image(systemName: "tuningfork")
+                                .resizable()
+                                .frame(width: 12, height: 12)
+                                .aspectRatio(contentMode: .fit)
+
+                            Text("\(entry.repo.forks)")
+
+                            if entry.repo.hasIssues {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .resizable()
+                                    .frame(width: 12, height: 12)
+                                    .aspectRatio(contentMode: .fit)
+
+                                Text("\(entry.repo.openIssues)")
+                            }
+
+                        }
+                        .font(.caption)
                     }
-                    .font(.caption)
+                    .containerBackground(for: .widget) { }
+                } else {
+                    VStack(alignment: .leading) {
+                        Text(entry.repo.name)
+                            .font(.headline)
+                        Text("\(entry.repo.daysSinceLastActivity) days")
+                        HStack {
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .frame(width: 12, height: 12)
+                                .aspectRatio(contentMode: .fit)
+
+                            Text("\(entry.repo.watchers)")
+
+                            Image(systemName: "tuningfork")
+                                .resizable()
+                                .frame(width: 12, height: 12)
+                                .aspectRatio(contentMode: .fit)
+
+                            Text("\(entry.repo.forks)")
+
+                            if entry.repo.hasIssues {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .resizable()
+                                    .frame(width: 12, height: 12)
+                                    .aspectRatio(contentMode: .fit)
+
+                                Text("\(entry.repo.openIssues)")
+                            }
+
+                        }
+                        .font(.caption)
+                    }
                 }
             case .accessoryCircular:
-                ZStack {
-                    AccessoryWidgetBackground()
-                    VStack {
-                        Text("\(entry.repo.daysSinceLastActivity)")
-                            .font(.headline)
-                        Text("days")
-                            .font(.caption)
+                if #available(iOS 17, *) {
+                    ZStack {
+                        AccessoryWidgetBackground()
+                        VStack {
+                            Text("\(entry.repo.daysSinceLastActivity)")
+                                .font(.headline)
+                            Text("days")
+                                .font(.caption)
+                        }
                     }
+                    .containerBackground(for: .widget) {}
+                } else {
+                    ZStack {
+                        AccessoryWidgetBackground()
+                        VStack {
+                            Text("\(entry.repo.daysSinceLastActivity)")
+                                .font(.headline)
+                            Text("days")
+                                .font(.caption)
+                        }
+                    }
+
                 }
             case .systemSmall, .systemExtraLarge:
                 EmptyView()
@@ -178,15 +232,8 @@ struct SingleRepoWidget: Widget {
 
 struct SingleRepoWidget_Previews: PreviewProvider {
     static var previews: some View {
-        if #available(iOS 17, *) {
-            SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
-                                                         repo: MockData.repoOne))
-            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-            .containerBackground(for: .widget) { }
-        } else {
-            SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
-                                                         repo: MockData.repoOne))
-            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-        }
+        SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
+                                                   repo: MockData.repoOne))
+        .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
     }
 }
