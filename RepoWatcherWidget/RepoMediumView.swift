@@ -52,7 +52,6 @@ struct RepoMediumView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .padding()
     }
 }
 
