@@ -59,7 +59,7 @@ struct DoubleRepoEntryView : View {
     var entry: DoubleRepoEntry
 
     var body: some View {
-        VStack(spacing: 36) {
+        VStack(spacing: 80) {
             RepoMediumView(repo: entry.topRepo)
             if let bottomRepo = entry.bottomRepo { // only show repo when not nil
                 RepoMediumView(repo: bottomRepo)
@@ -82,11 +82,9 @@ struct DoubleRepoWidget: Widget {
     }
 }
 
-struct DoubleRepoWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        DoubleRepoEntryView(entry: DoubleRepoEntry(date: Date(),
-                                                   topRepo: MockData.repoOne,
-                                                   bottomRepo: MockData.repoTwo))
-        .previewContext(WidgetPreviewContext(family: .systemLarge))
-    }
+#Preview(as: .systemLarge) {
+    DoubleRepoWidget()
+} timeline: {
+    DoubleRepoEntry(date: .now, topRepo: MockData.repoOne, bottomRepo: nil)
+    DoubleRepoEntry(date: .now, topRepo: MockData.repoOneV2, bottomRepo: nil)
 }

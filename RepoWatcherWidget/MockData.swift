@@ -15,12 +15,26 @@ struct MockData {
                                     forks: 66,
                                     watchers: 250,
                                     openIssues: 88,
-                                    pushedAt: "2022-10-27T19:00:59Z",
+                                    pushedAt: "2023-07-27T19:00:59Z",
                                     avatarData: Data(),
                                     contributors: [Contributor(login: "Simon Berner", avatarUrl: "", contributions: 23, avatarData: Data()),
                                                    Contributor(login: "Sean Penn", avatarUrl: "", contributions: 33, avatarData: Data()),
                                                    Contributor(login: "Alicia Keys", avatarUrl: "", contributions: 99, avatarData: Data()),
                                                    Contributor(login: "Minion Mini", avatarUrl: "", contributions: 45, avatarData: Data())])
+
+    // mock data object
+    static let repoOneV2 = Repository(name: "Repository 1",
+                                      owner: Owner(avatarUrl: ""),
+                                      hasIssues: true,
+                                      forks: 112,
+                                      watchers: 327,
+                                      openIssues: 100,
+                                      pushedAt: "2023-10-27T19:00:59Z",
+                                      avatarData: Data(),
+                                      contributors: [Contributor(login: "Simon Berner", avatarUrl: "", contributions: 149, avatarData: Data()),
+                                                     Contributor(login: "Sean Penn", avatarUrl: "", contributions: 50, avatarData: Data()),
+                                                     Contributor(login: "Alicia Keys", avatarUrl: "", contributions: 99, avatarData: Data()),
+                                                     Contributor(login: "Minion Mini", avatarUrl: "", contributions: 16, avatarData: Data())])
 
     // mock data object
     static let repoTwo = Repository(name: "Repository 2",

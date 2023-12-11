@@ -42,24 +42,26 @@ struct RepoMediumView: View {
                 Text("\(repo.daysSinceLastActivity)")
                     .bold()
                     .font(.system(size: 70))
-                    .frame(width: 90)
+                    .frame(width: 90, height: 80)
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
                     .foregroundColor(repo.daysSinceLastActivity < 50 ? .green : .red)
+                    .contentTransition(.numericText())
 
                 Text("days ago")
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
         }
+        .containerBackground(for: .widget) { }
     }
 }
 
-struct RepoMediumView_Previews: PreviewProvider {
-    static var previews: some View {
-        RepoMediumView(repo: MockData.repoOne)
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
-    }
+#Preview(as: .systemMedium) {
+    DoubleRepoWidget()
+} timeline: {
+    DoubleRepoEntry(date: .now, topRepo: MockData.repoOne, bottomRepo: nil)
+    DoubleRepoEntry(date: .now, topRepo: MockData.repoOneV2, bottomRepo: nil)
 }
 
 // fileprivate: only accessible inside this file
@@ -71,6 +73,7 @@ fileprivate struct StatLabel: View {
         Label {
             Text("\(value)")
                 .font(.footnote)
+                .contentTransition(.numericText())
         } icon: {
             Image(systemName: systemImageName)
                 .foregroundColor(.green)

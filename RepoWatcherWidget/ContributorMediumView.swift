@@ -38,18 +38,12 @@ struct ContributorMediumView: View {
                             Text("\(contributor.contributions)")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
+                                .id(repo.name)
+                                .transition(.push(from: .trailing))
                         }
                     }
                 }
             }
         }
-        .padding()
-    }
-}
-
-struct ContributorMediumView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContributorMediumView(repo: MockData.repoOne)
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

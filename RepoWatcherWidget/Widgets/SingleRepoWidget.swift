@@ -88,7 +88,7 @@ struct SingleRepoEntryView : View {
                 }
             case .systemLarge:
                 if #available(iOS 17, *) {
-                    VStack {
+                    VStack(spacing: 50) {
                         RepoMediumView(repo: entry.repo)
                         ContributorMediumView(repo: entry.repo)
                     }
@@ -210,7 +210,7 @@ struct SingleRepoEntryView : View {
 
 struct SingleRepoWidget: Widget {
     let kind: String = "ContributorWidget"
-
+    
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: SelectSingleRepoIntent.self, provider: SingleRepoProvider()) { entry in
             if #available(iOS 17, *) {
@@ -230,10 +230,9 @@ struct SingleRepoWidget: Widget {
     }
 }
 
-struct SingleRepoWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        SingleRepoEntryView(entry: SingleRepoEntry(date: Date(),
-                                                   repo: MockData.repoOne))
-        .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-    }
+#Preview(as: .systemLarge) {
+    SingleRepoWidget()
+} timeline: {
+    SingleRepoEntry(date: .now, repo: MockData.repoOne)
+    SingleRepoEntry(date: .now, repo: MockData.repoOneV2)
 }
