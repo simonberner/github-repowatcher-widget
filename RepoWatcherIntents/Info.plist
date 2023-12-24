@@ -13,7 +13,6 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>SelectSingleRepoIntent</string>
-				<string>SelectTwoReposIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

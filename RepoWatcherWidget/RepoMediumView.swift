@@ -57,12 +57,12 @@ struct RepoMediumView: View {
     }
 }
 
-#Preview(as: .systemMedium) {
-    DoubleRepoWidget()
-} timeline: {
-    DoubleRepoEntry(date: .now, topRepo: MockData.repoOne, bottomRepo: nil)
-    DoubleRepoEntry(date: .now, topRepo: MockData.repoOneV2, bottomRepo: nil)
-}
+//#Preview(as: .systemMedium) {
+//    DoubleRepoWidget()
+//} timeline: {
+//    DoubleRepoEntry(date: .now, topRepo: MockData.repoOne, bottomRepo: nil)
+//    DoubleRepoEntry(date: .now, topRepo: MockData.repoOneV2, bottomRepo: nil)
+//}
 
 // fileprivate: only accessible inside this file
 fileprivate struct StatLabel: View {

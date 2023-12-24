@@ -208,6 +208,7 @@ struct SingleRepoEntryView : View {
 
 }
 
+@main
 struct SingleRepoWidget: Widget {
     let kind: String = "ContributorWidget"
     

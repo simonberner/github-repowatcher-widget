@@ -36,33 +36,3 @@ extension IntentHandler: SelectSingleRepoIntentHandling {
         return "simonberner/github-repowatcher-widget"
     }
 }
-
-// The IntentHandler needs to know what to show
-extension IntentHandler: SelectTwoReposIntentHandling {
-
-    // Get List of repos from UserDefaults database for the top repo
-    func provideTopRepoOptionsCollection(for intent: SelectTwoReposIntent) async throws -> INObjectCollection<NSString> {
-        guard let repos = UserDefaults.shared.value(forKey: UserDefaults.repoKey) as? [String] else {
-            throw UserDefaultsError.retreival
-        }
-
-        return INObjectCollection(items: repos as [NSString])
-    }
-
-    // Get List of repos from UserDefaults database for the bottom repo
-    func provideBottomRepoOptionsCollection(for intent: SelectTwoReposIntent) async throws -> INObjectCollection<NSString> {
-        guard let repos = UserDefaults.shared.value(forKey: UserDefaults.repoKey) as? [String] else {
-            throw UserDefaultsError.retreival
-        }
-
-        return INObjectCollection(items: repos as [NSString])
-    }
-
-    func defaultTopRepo(for intent: SelectTwoReposIntent) -> String? {
-        return "simonberner/github-repowatcher-widget"
-    }
-
-    func defaultBottomRepo(for intent: SelectTwoReposIntent) -> String? {
-        return "simonberner/github-repowatcher-widget"
-    }
-}

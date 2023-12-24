@@ -33,9 +33,7 @@
 		15D2D6C42933A9D600AC35CC /* GitHubRepoWatcherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6C32933A9D600AC35CC /* GitHubRepoWatcherUITestsLaunchTests.swift */; };
 		15D2D6D82933B7F500AC35CC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2D6D72933B7F500AC35CC /* WidgetKit.framework */; };
 		15D2D6DA2933B7F500AC35CC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2D6D92933B7F500AC35CC /* SwiftUI.framework */; };
-		15D2D6DD2933B7F500AC35CC /* RepoWatcherWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6DC2933B7F500AC35CC /* RepoWatcherWidgetBundle.swift */; };
 		15D2D6DF2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6DE2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift */; };
-		15D2D6E12933B7F500AC35CC /* DoubleRepoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6E02933B7F500AC35CC /* DoubleRepoWidget.swift */; };
 		15D2D6E42933B7F700AC35CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D2D6E32933B7F700AC35CC /* Assets.xcassets */; };
 		15D2D6E62933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */; };
 		15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */; };
@@ -121,9 +119,7 @@
 		15D2D6D52933B7F500AC35CC /* RepoWatcherWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RepoWatcherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D2D6D72933B7F500AC35CC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		15D2D6D92933B7F500AC35CC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		15D2D6DC2933B7F500AC35CC /* RepoWatcherWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherWidgetBundle.swift; sourceTree = "<group>"; };
 		15D2D6DE2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoWatcherWidgetLiveActivity.swift; sourceTree = "<group>"; };
-		15D2D6E02933B7F500AC35CC /* DoubleRepoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRepoWidget.swift; sourceTree = "<group>"; };
 		15D2D6E22933B7F500AC35CC /* RepoWatcherWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = RepoWatcherWidget.intentdefinition; sourceTree = "<group>"; };
 		15D2D6E32933B7F700AC35CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D2D6E52933B7F700AC35CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				15800F39293CD5EB00B13A1B /* SingleRepoWidget.swift */,
-				15D2D6E02933B7F500AC35CC /* DoubleRepoWidget.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -274,7 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				1523CD37296C833400B23374 /* Widgets */,
-				15D2D6DC2933B7F500AC35CC /* RepoWatcherWidgetBundle.swift */,
 				15D2D6DE2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift */,
 				152225D42937A47700A7BC2C /* RepoMediumView.swift */,
 				15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */,
@@ -521,8 +515,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1522B5122934FA2A004B1EB0 /* NetworkManager.swift in Sources */,
-				15D2D6E12933B7F500AC35CC /* DoubleRepoWidget.swift in Sources */,
-				15D2D6DD2933B7F500AC35CC /* RepoWatcherWidgetBundle.swift in Sources */,
 				1522B50F2934B7B0004B1EB0 /* Repository.swift in Sources */,
 				15D2D6DF2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift in Sources */,
 				15D3F4D3293A0B6E00874205 /* MockData.swift in Sources */,
