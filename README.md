@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://en.wikipedia.org/wiki/IOS">
-        <img src="https://img.shields.io/badge/iOS-16.2+-blue.svg?style=for-the-badge" />
+        <img src="https://img.shields.io/badge/iOS-17.0+-blue.svg?style=for-the-badge" />
     </a>
     <a href="https://www.swift.org/">
         <img src="https://img.shields.io/badge/Swift-5.9-brightgreen.svg?style=for-the-badge&logo=swift" />
@@ -11,7 +11,7 @@
         <img src="https://img.shields.io/badge/SwiftUI-blue.svg?style=for-the-badge&logo=swift&logoColor=black" />
     </a>
     <a href="https://developer.apple.com/xcode">
-        <img src="https://img.shields.io/badge/Xcode-15-blue.svg?style=for-the-badge" />
+        <img src="https://img.shields.io/badge/Xcode-15.1-blue.svg?style=for-the-badge" />
     </a>
     <a href="https://mastodon.green/@simonberner">
         <img src="https://img.shields.io/badge/Contact-@simonberner-orange?style=for-the-badge" alt="mastodon.green/@simonberner" />
@@ -27,7 +27,7 @@
     </a>
 </p>
 
-This is a more advanced iOS16+ widget project to learn how to create a medium and large widget which relies on network calls to update its content.
+This is a more advanced iOS17+ widget project to learn how to create a medium and large widget which relies on network calls to update its content.
 
 ---
 
@@ -63,7 +63,7 @@ A large sized Widget that gets the (top 4) contributors of a GitHub repository a
 An App Group is setup among the GitHubRepoWatcher and the RepoWatcherIntents target to share the same UserDefaults database.
 
 ## Tech Stack
-- Xcode 15.0
+- Xcode 15.1
 - Swift 5.9
 
 ## Frameworks
@@ -72,8 +72,8 @@ An App Group is setup among the GitHubRepoWatcher and the RepoWatcherIntents tar
 - [App Intents](https://developer.apple.com/documentation/appintents/)
 
 ## Device Compatibility
-- iPhone >= iOS16.2+
-- iPad >= iOS16.2+
+- iPhone >= iOS17.0+
+- iPad >= iOS17.0+
 
 ## Screenshots
 | Medium/Large Widget | Large Widget |
