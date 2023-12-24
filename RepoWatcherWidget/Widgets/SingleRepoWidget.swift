@@ -74,125 +74,63 @@ struct SingleRepoEntryView : View {
     var body: some View {
         switch family {
         case .systemMedium:
-            if #available(iOS 17, *) {
-                // adopt for container background
-                RepoMediumView(repo: entry.repo)
-                    .containerBackground(for: .widget) { }
-            } else {
-                RepoMediumView(repo: entry.repo)
-            }
-        case .systemLarge:
-            if #available(iOS 17, *) {
-                VStack(spacing: 50) {
-                    RepoMediumView(repo: entry.repo)
-                    ContributorMediumView(repo: entry.repo)
-                }
+            // adopt for container background
+            RepoMediumView(repo: entry.repo)
                 .containerBackground(for: .widget) { }
-            } else {
-                VStack {
-                    RepoMediumView(repo: entry.repo)
-                    ContributorMediumView(repo: entry.repo)
-                }
+        case .systemLarge:
+            VStack(spacing: 50) {
+                RepoMediumView(repo: entry.repo)
+                ContributorMediumView(repo: entry.repo)
             }
+            .containerBackground(for: .widget) { }
             // Lock Screen Widget Families
         case .accessoryInline:
-            if #available(iOS 17, *) {
-                Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
-                    .containerBackground(for: .widget) { }
-            } else {
-                Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
-            }
-        case .accessoryRectangular:
-            if #available(iOS 17, *) {
-                VStack(alignment: .leading) {
-                    Text(entry.repo.name)
-                        .font(.headline)
-                    Text("\(entry.repo.daysSinceLastActivity) days")
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .aspectRatio(contentMode: .fit)
-                        
-                        Text("\(entry.repo.watchers)")
-                        
-                        Image(systemName: "tuningfork")
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .aspectRatio(contentMode: .fit)
-                        
-                        Text("\(entry.repo.forks)")
-                        
-                        if entry.repo.hasIssues {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .resizable()
-                                .frame(width: 12, height: 12)
-                                .aspectRatio(contentMode: .fit)
-                            
-                            Text("\(entry.repo.openIssues)")
-                        }
-                        
-                    }
-                    .font(.caption)
-                }
+            Text("\(entry.repo.name) - \(entry.repo.daysSinceLastActivity)")
                 .containerBackground(for: .widget) { }
-            } else {
-                VStack(alignment: .leading) {
-                    Text(entry.repo.name)
-                        .font(.headline)
-                    Text("\(entry.repo.daysSinceLastActivity) days")
-                    HStack {
-                        Image(systemName: "star.fill")
+        case .accessoryRectangular:
+            VStack(alignment: .leading) {
+                Text(entry.repo.name)
+                    .font(.headline)
+                Text("\(entry.repo.daysSinceLastActivity) days")
+                HStack {
+                    Image(systemName: "star.fill")
+                        .resizable()
+                        .frame(width: 12, height: 12)
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Text("\(entry.repo.watchers)")
+                    
+                    Image(systemName: "tuningfork")
+                        .resizable()
+                        .frame(width: 12, height: 12)
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Text("\(entry.repo.forks)")
+                    
+                    if entry.repo.hasIssues {
+                        Image(systemName: "exclamationmark.triangle.fill")
                             .resizable()
                             .frame(width: 12, height: 12)
                             .aspectRatio(contentMode: .fit)
                         
-                        Text("\(entry.repo.watchers)")
-                        
-                        Image(systemName: "tuningfork")
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .aspectRatio(contentMode: .fit)
-                        
-                        Text("\(entry.repo.forks)")
-                        
-                        if entry.repo.hasIssues {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .resizable()
-                                .frame(width: 12, height: 12)
-                                .aspectRatio(contentMode: .fit)
-                            
-                            Text("\(entry.repo.openIssues)")
-                        }
-                        
+                        Text("\(entry.repo.openIssues)")
                     }
-                    .font(.caption)
+                    
                 }
+                .font(.caption)
             }
+            .containerBackground(for: .widget) { }
         case .accessoryCircular:
-            if #available(iOS 17, *) {
-                ZStack {
-                    AccessoryWidgetBackground()
-                    VStack {
-                        Text("\(entry.repo.daysSinceLastActivity)")
-                            .font(.headline)
-                        Text("days")
-                            .font(.caption)
-                    }
+            ZStack {
+                AccessoryWidgetBackground()
+                VStack {
+                    Text("\(entry.repo.daysSinceLastActivity)")
+                        .font(.headline)
+                    Text("days")
+                        .font(.caption)
                 }
-                .containerBackground(for: .widget) {}
-            } else {
-                ZStack {
-                    AccessoryWidgetBackground()
-                    VStack {
-                        Text("\(entry.repo.daysSinceLastActivity)")
-                            .font(.headline)
-                        Text("days")
-                            .font(.caption)
-                    }
-                }
-                
             }
+            .containerBackground(for: .widget) {}
         case .systemSmall, .systemExtraLarge:
             EmptyView()
         @unknown default:
