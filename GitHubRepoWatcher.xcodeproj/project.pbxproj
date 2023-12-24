@@ -19,6 +19,9 @@
 		1522B5122934FA2A004B1EB0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1522B5102934FA2A004B1EB0 /* NetworkManager.swift */; };
 		15449CC7296B0A450053541B /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15449CC6296B0A450053541B /* UserDefaults+Ext.swift */; };
 		15800F3A293CD5EB00B13A1B /* SingleRepoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800F39293CD5EB00B13A1B /* SingleRepoWidget.swift */; };
+		1592CCD42B38659800585FA0 /* SelectSingleRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592CCD32B38659800585FA0 /* SelectSingleRepo.swift */; };
+		1592CCD52B38659800585FA0 /* SelectSingleRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592CCD32B38659800585FA0 /* SelectSingleRepo.swift */; };
+		1592CCD72B38677A00585FA0 /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15449CC6296B0A450053541B /* UserDefaults+Ext.swift */; };
 		15A1A182296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15A1A181296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition */; };
 		15A1A183296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 15A1A181296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition */; };
 		15B8B7BA293E82CC00AD12F4 /* ContributorMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */; };
@@ -101,6 +104,7 @@
 		15449CC5296B08380053541B /* GitHubRepoWatcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubRepoWatcher.entitlements; sourceTree = "<group>"; };
 		15449CC6296B0A450053541B /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		15800F39293CD5EB00B13A1B /* SingleRepoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRepoWidget.swift; sourceTree = "<group>"; };
+		1592CCD32B38659800585FA0 /* SelectSingleRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSingleRepo.swift; sourceTree = "<group>"; };
 		15A1A181296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectRepoIntents.intentdefinition; sourceTree = "<group>"; };
 		15A1A184296DBE2100904FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		15B8B7B9293E82CC00AD12F4 /* ContributorMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorMediumView.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 		15D2D6DB2933B7F500AC35CC /* RepoWatcherWidget */ = {
 			isa = PBXGroup;
 			children = (
+				1592CCD32B38659800585FA0 /* SelectSingleRepo.swift */,
 				1523CD37296C833400B23374 /* Widgets */,
 				15D2D6DE2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift */,
 				152225D42937A47700A7BC2C /* RepoMediumView.swift */,
@@ -488,6 +493,7 @@
 				15D2D6E72933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
 				15449CC7296B0A450053541B /* UserDefaults+Ext.swift in Sources */,
 				1522B5112934FA2A004B1EB0 /* NetworkManager.swift in Sources */,
+				1592CCD42B38659800585FA0 /* SelectSingleRepo.swift in Sources */,
 				15D2D6A72933A9D200AC35CC /* GitHubRepoWatcherApp.swift in Sources */,
 				1522B50D2934A1D1004B1EB0 /* Repository.swift in Sources */,
 			);
@@ -518,9 +524,11 @@
 				1522B50F2934B7B0004B1EB0 /* Repository.swift in Sources */,
 				15D2D6DF2933B7F500AC35CC /* RepoWatcherWidgetLiveActivity.swift in Sources */,
 				15D3F4D3293A0B6E00874205 /* MockData.swift in Sources */,
+				1592CCD52B38659800585FA0 /* SelectSingleRepo.swift in Sources */,
 				15D2D6E62933B7F700AC35CC /* RepoWatcherWidget.intentdefinition in Sources */,
 				152225D52937A47700A7BC2C /* RepoMediumView.swift in Sources */,
 				15800F3A293CD5EB00B13A1B /* SingleRepoWidget.swift in Sources */,
+				1592CCD72B38677A00585FA0 /* UserDefaults+Ext.swift in Sources */,
 				15B8B7BA293E82CC00AD12F4 /* ContributorMediumView.swift in Sources */,
 				15A1A183296DBDFB00904FF1 /* SelectRepoIntents.intentdefinition in Sources */,
 				15B8B7BD293E876000AD12F4 /* Contributor.swift in Sources */,
